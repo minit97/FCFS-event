@@ -30,6 +30,8 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
 	runtimeOnly("com.h2database:h2")	// 테스트용
+
+	implementation("org.springframework.boot:spring-boot-starter-data-redis")
 }
 
 kotlin {
