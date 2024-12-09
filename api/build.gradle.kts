@@ -31,7 +31,9 @@ dependencies {
 
 	runtimeOnly("com.h2database:h2")	// 테스트용
 
-	implementation("org.springframework.boot:spring-boot-starter-data-redis")
+	implementation("org.springframework.boot:spring-boot-starter-data-redis")	// redis
+
+	implementation("org.springframework.kafka:spring-kafka")	// kafka
 }
 
 kotlin {
