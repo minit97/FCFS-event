@@ -15,9 +15,8 @@ class ApplyService(
     fun apply(userId: Long) {
         val count = couponCountRepository.increment() ?:
                         throw NullPointerException("Count is null")
-//        if (count > 100) return
+        if (count > 100) return
 
-//        couponRepository.save(Coupon(userId = userId))
         couponCreateProducer.create(userId)
     }
 }

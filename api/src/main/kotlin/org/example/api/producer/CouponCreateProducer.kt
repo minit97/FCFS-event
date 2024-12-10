@@ -9,7 +9,6 @@ class CouponCreateProducer(
 ) {
 
     fun create(userId: Long) {
-        println("박현민 ====박현민 ====박현민 ====박현민 ====박현민 ====박현민 ====")
         kafkaTemplate.send("coupon_create", userId)
     }
 
