@@ -52,4 +52,31 @@ class ApplyServiceTest(
 
         assertThat(count).isEqualTo(100)
     }
+
+    @Test
+    @DisplayName("한명당_한개의쿠폰만_발급")
+    fun one_person_one_coupon() {
+        val threadCount = 1000
+        val executorService: ExecutorService = Executors.newFixedThreadPool(threadCount)
+        val latch = CountDownLatch(threadCount)
+
+        for (i in 0..<threadCount) {
+            executorService.submit({
+                try {
+                    applyService.apply(1)
+                } finally {
+                    latch.countDown()
+                }
+            })
+        }
+
+        latch.await()
+
+        Thread.sleep(10000)
+
+        val count = couponRepository.count()
+
+        assertThat(count).isEqualTo(1)
+    }
+
 }
